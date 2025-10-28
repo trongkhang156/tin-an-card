@@ -1,19 +1,15 @@
 {
   "name": "tin-an-card",
   "version": "1.0.0",
-  "description": "Ứng dụng tạo thẻ nhân viên từ Excel và xuất PDF (Tín An)",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
-  "keywords": [],
-  "author": "trongkhang156",
-  "license": "ISC",
   "dependencies": {
-    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "multer": "^2.0.2",
-    "puppeteer": "^24.26.1",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "puppeteer-core": "^24.3.0",
+    "chromium": "^3.0.2"
   }
 }
