@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thẻ nhân viên</title>
+<style>
+@page {
+    size: A4 portrait;
+    margin: 10mm;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 5mm;
+    padding: 0;
+    margin: 0;
+}
+
+.card {
+    width: 100%;
+    height: 74mm; /* 297mm / 4 */
+    border: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.left, .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Giữ nguyên style thẻ nhân viên trước đó */
+.header-left { display:flex; gap:5px; align-items:center; }
+.logo { width:30mm; height:30mm; }
+.company-info { display:flex; flex-direction:column; justify-content:center; font-size:8pt; }
+.photo-box { border:1px solid #000; height:30mm; width:25mm; margin:2mm auto; display:flex; align-items:center; justify-content:center; font-size:8pt; }
+.info-box { background:#0052cc; color:white; text-align:center; font-size:8pt; padding:2mm; }
+.emp-id { background:red; color:white; font-weight:bold; text-align:center; font-size:8pt; margin-top:auto; }
+.right { border-left:1px solid #000; padding-left:2mm; font-size:7pt; }
+.rules-header { background:red; color:white; text-align:center; font-weight:bold; font-size:8pt; padding:1mm 0; }
+.rules { flex-grow:1; background:#0052cc; color:white; padding:2mm; }
+.contact { background:#0073e6; color:white; text-align:center; padding:1mm; }
+.footer { background:red; color:white; text-align:center; font-weight:bold; padding:1mm; font-size:8pt; }
+</style>
+</head>
+<body>
+  <!-- Thêm thẻ nhân viên ở đây -->
+  <% employees.forEach(emp => { %>
+  <div class="card">
+    <div class="left">
+      <div class="header-left">
+        <img src="https://i.imgur.com/3CSs9Yw.png" class="logo">
+        <div class="company-info">
+          <div class="name1">CÔNG TY CỔ PHẦN ĐT-SX-TM</div>
+          <div class="name2">TÍN AN</div>
+        </div>
+      </div>
+      <div class="photo-box">ẢNH 3X4</div>
+      <div class="info-box">
+        <div class="emp-name"><%= emp["Họ và tên"] %></div>
+        <div class="emp-title"><%= emp["Chức vụ"] %></div>
+      </div>
+      <div class="emp-id">MSNV: <%= emp["MSNV"] %></div>
+    </div>
+    <div class="right">
+      <div class="rules-header">QUY ĐỊNH</div>
+      <div class="rules">
+        <ol>
+          <li>CB-CNV phải đeo thẻ khi làm việc</li>
+          <li>Không được cho người khác sử dụng thẻ</li>
+          <li>Phải quẹt thẻ khi ra vào cổng</li>
+          <li>Khi mất thẻ phải báo ngay về P.HCNS</li>
+        </ol>
+      </div>
+      <div class="contact">
+        Lô B1, Đường D3, KCN Đồng An 2, P. Hòa Phú, TP. TDM<br>
+        ĐT: 0274 386 6661
+      </div>
+      <div class="footer">TIN AN JSC</div>
+    </div>
+  </div>
+  <% }) %>
+</body>
+</html>
