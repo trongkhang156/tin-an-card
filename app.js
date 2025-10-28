@@ -1,7 +1,8 @@
 const express = require('express');
 const multer = require('multer');
 const XLSX = require('xlsx');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+const chromium = require('chromium');
 const fs = require('fs');
 const path = require('path');
 
@@ -285,7 +286,11 @@ app.post('/upload', upload.single('excel'), async (req, res) => {
 
     html += `</div></body></html>`;
 
-    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
+    const browser = await puppeteer.launch({
+  executablePath: chromium.path,
+  headless: true,
+  args: ['--no-sandbox', '--disable-setuid-sandbox']
+});
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: 'networkidle0' });
     const pdfBuffer = await page.pdf({
